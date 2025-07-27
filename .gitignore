@@ -1,1 +1,23 @@
 venv/
+
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# DVC
+*.dvc
+data/
+
+# Logs
+logs/
+
+# VSCode/IDE
+.vscode/
+*.env
+
+!data/iris.csv.dvc
