@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Dhivya%20Shankar/Desktop/mlops-iris/mlruns/222440962282538811/0ff4a018217a4522a883f1fac53ebb5d/artifacts
+end_time: 1753616860297
+entry_point_name: ''
+experiment_id: '222440962282538811'
+lifecycle_stage: active
+run_id: 0ff4a018217a4522a883f1fac53ebb5d
+run_name: rare-newt-593
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753616850240
+status: 3
+tags: []
+user_id: Dhivya Shankar
