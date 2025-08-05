@@ -21,3 +21,55 @@ logs/
 *.env
 
 !data/iris.csv.dvc
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Logs
+*.log
+logs/*.log
+
+# Data (if using DVC)
+/data/processed/
+/models/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore
