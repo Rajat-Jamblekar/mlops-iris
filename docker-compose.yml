@@ -1,4 +1,4 @@
-version: '3.8'
+# version: '3.8'
 
 services:
   iris-api:
@@ -39,6 +39,7 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     volumes:
       - grafana-storage:/var/lib/grafana
+      - /c/Users/Dhivya Shankar/Desktop/mlops-iris/logs/predictions.db:/var/lib/grafana/predictions.db
     depends_on:
       - prometheus
 
