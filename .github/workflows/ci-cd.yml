@@ -88,6 +88,9 @@ jobs:
       run: |
         black .
     
+    - name: Prepare logs directory
+      run: mkdir -p logs
+    
     - name: Run tests
       run: |
         pytest tests/ -v
