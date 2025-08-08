@@ -59,7 +59,7 @@ on:
     branches: [ main ]
 
 env:
-  DOCKER_IMAGE: your-username/iris-api
+  DOCKER_IMAGE: rajatdj13/iris-api
   
 jobs:
   test:
