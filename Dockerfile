@@ -20,7 +20,7 @@ COPY . .
 COPY mlruns ./mlruns
 
 # Copy the models folder (including .pkl and best_model_info.txt)
-COPY models ./models
+COPY ./models mlops-iris/models
 
 # Create necessary directories
 RUN mkdir -p logs models
