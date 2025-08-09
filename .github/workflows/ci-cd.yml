@@ -129,15 +129,23 @@ jobs:
     if: github.ref == 'refs/heads/main'
     
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Deploy to staging
-      run: |
-        echo "Deploying to staging environment..."
-        # Add your deployment script here
-        # For example, deploy to AWS EC2, Azure, or local environment
-        
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: SSH into EC2 and deploy
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker pull rajatdj13/iris-api:latest
+          docker stop iris-api || true
+          docker rm iris-api || true
+          docker run -d --name iris-api -p 80:80 rajatdj13/iris-api:latest
+
     - name: Health check
       run: |
-        echo "Performing health check..."
-        # Add health check commands
+        sleep 5
+        curl -f http://${{ secrets.EC2_HOST }}/predict?sepal_length=5.1&sepal_width=3.5&petal_length=1.4&petal_width=0.2
