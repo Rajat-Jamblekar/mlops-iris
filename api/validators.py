@@ -5,7 +5,7 @@ import numpy as np
 class EnhancedPredictionRequest(BaseModel):
     features: List[float] = Field(
         ..., 
-        description="Four iris features: sepal_length, sepal_width, petal_length, petal_width",
+        description="4 iris features: sepal_length, sepal_width, petal_length, petal_width",
         example=[5.1, 3.5, 1.4, 0.2]
     )
     model_version: Optional[str] = Field(
