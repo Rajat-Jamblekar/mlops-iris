@@ -11,10 +11,10 @@ __pycache__/
 
 # DVC
 *.dvc
-data/
+# data/
 
-# Logs
-logs/
+# # Logs
+# logs/
 
 # VSCode/IDE
 .vscode/
@@ -57,8 +57,8 @@ mlartifacts/
 *.log
 logs/*.log
 
-# Data (if using DVC)
-/data/processed/
+# # Data (if using DVC)
+# /data/processed/
 
 # IDE
 .vscode/

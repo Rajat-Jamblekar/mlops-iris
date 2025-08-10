@@ -14,19 +14,27 @@ class EnhancedPredictionRequest(BaseModel):
     )
     
     @field_validator('features')
-    def validate_features(cls, v):
+    def check_feature_count(cls, v):
         if len(v) != 4:
-            raise ValueError('Features must contain exactly 4 values: [sepal_length, sepal_width, petal_length, petal_width]')
+            raise ValueError("Exactly 4 features required (sepal_length, sepal_width, petal_length, petal_width)")
+        return v
+    
+    @field_validator('features')
+    def check_feature_values(cls, v):
+        # Define acceptable ranges for each feature
+        feature_ranges = [
+            (0, 8),   # sepal_length (cm)
+            (0, 5),   # sepal_width (cm)
+            (0, 7),   # petal_length (cm)
+            (0, 3)    # petal_width (cm)
+        ]
         
-        feature_names = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
-        for i, (feature_name, value) in enumerate(zip(feature_names, v)):
-            if not isinstance(value, (int, float)):
-                raise ValueError(f'{feature_name} must be numeric')
-            if value < 0:
-                raise ValueError(f'{feature_name} must be non-negative')
-            if value > 20:  # Reasonable upper bound for iris measurements
-                raise ValueError(f'{feature_name} seems too large (>{20})')
-        
+        for i, (value, (min_val, max_val)) in enumerate(zip(v, feature_ranges)):
+            if not (min_val <= value <= max_val):
+                feature_names = ["sepal_length", "sepal_width", "petal_length", "petal_width"]
+                raise ValueError(
+                    f"Feature {feature_names[i]} must be between {min_val} and {max_val}, got {value}"
+                )
         return v
     
     class Config:

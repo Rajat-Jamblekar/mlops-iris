@@ -12,6 +12,7 @@ from fastapi.responses import Response
 import uvicorn
 
 from api.schemas import PredictionRequest, PredictionResponse, HealthResponse
+from api.validators import EnhancedPredictionRequest
 
 # Setup logging
 logging.basicConfig(
@@ -122,7 +123,7 @@ async def health():
     )
 
 @app.post("/predict", response_model=PredictionResponse)
-async def predict(request: PredictionRequest):
+async def predict(request: EnhancedPredictionRequest):
     """Make prediction on iris data"""
     
     if model is None or scaler is None:
